@@ -22,7 +22,7 @@ EOL
 for (( i=1; i<=$server_count; i++ ))
 do
     cat <<EOL >> /etc/rc.local
-ip tunnel add 6to4tun_IR_$i mode sit remote $external_ip local ${iran_ips[$i-1]} ttl 255
+ip tunnel add 6to4tun_IR_$i mode sit remote ${iran_ips[$i-1]} local $external_ip ttl 255
 ip link set 6to4tun_IR_$i up
 ip addr add 2001:470:1f10:e${i}f::1/64 dev 6to4tun_IR_$i
 EOL
